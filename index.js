@@ -1,4 +1,6 @@
 // What is a date? 
+// A date is a three part value in a specific
+// format that contains data and time parts.
 
 // Make a Date
 const today = new Date() // Gets the time now
@@ -22,11 +24,16 @@ console.log('-------- Age --------')
 
 // You can make a date from almost any 
 // human readable string for example: 
-const bday = new Date('Sept 26, 1965')
+const bday = new Date('Dec 06, 2001')
 // Challenge: Calculate your age with JS
 const age = today - bday 
 console.log(age, '<- Age in ms')
 // Challenge: Calculate your age in secs, mins, hrs, days, years
+console.log(age / 1000, '<- Age in secs')
+console.log(age / 1000 / 60, '<- Age in mins')
+console.log(age / 1000 / 60 / 60, '<- Age in hrs')
+console.log(age / 1000 / 60 / 60 / 24, '<- Age in days')
+console.log(age / 1000 / 60 / 60 / 24 / 365.25, '<- Age in yrs')
 
 console.log('-------- BDay --------')
 
