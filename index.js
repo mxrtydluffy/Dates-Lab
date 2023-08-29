@@ -182,3 +182,23 @@ console.log(whensYourParty(bday, 2022), 'My birthday party!')
 // Stretch Goal: Return an array listing all 
 // the days when your birthday occured since 
 // you were born. 
+
+console.log(' *** Stretch Problem #4 ***')
+
+function PartySinceBirth(birthday) {
+  const birthYear = birthday.getFullYear();
+  const currentYear = new Date().getFullYear();
+
+  let birthdayDays = [];
+
+  for(let year = birthYear; year <= currentYear; year++) {
+      const birthdayInYear = new Date(year, birthday.getMonth(), birthday.getDate());
+      const daysOfWeek = birthdayInYear.getDay();
+      birthdayDays.push(days[daysOfWeek]);
+  }
+
+  return birthdayDays;
+}
+
+console.log('Days of my birthday after birth!')
+console.log(PartySinceBirth(bday))
