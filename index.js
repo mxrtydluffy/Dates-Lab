@@ -84,7 +84,10 @@ console.log('--------- Problem 1 --------')
 // offset is the number days between each of the dates returned
 
 function consecutiveDates(date, repeat, offset) {
-  // Your code here 
+  for (let i = 0; i < repeat; i++) {
+    console.log(date.getMonth() + 1 + '/' + '/' + date.getFullYear());
+    date.setDate(date.getDate() + offset);
+  }
 }
 
 // Starting date 1/1/2019, repeat 4 times, return dates 
@@ -120,11 +123,10 @@ console.log('--------- Problem 2 --------')
 // nums.sort((a,b) => a - b) -> [77, 888, 1111, 2222, 5555]
 
 function orderDates(dates) {
-  // orders the dates 
-  // returns a new array of ordered dates
+  return dates.sort((a, b) => a - b)
 }
 
-orderDates([today, dueDate, startDate, bday, newYear])
+console.log(orderDates([today, dueDate, startDate, bday, newYear]))
 
 // [bday, startdate, duedate, newyear]
 
@@ -143,8 +145,16 @@ console.log('--------- Problem 3 --------')
 // but not before!
 
 function nextDate(dates) {
-  // find the date that will happen next in dates
-  // return the next date
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Past & future dates
+  const futureDates = dates
+    .filter(date => date > today)
+    .sort((a, b) => a - b);
+
+  // returns future dates. If not null
+  return futureDates[0] || null;
 }
 
 nextDate([today, dueDate, startDate, bday, newYear])
@@ -158,10 +168,16 @@ console.log('--------- Problem 4 --------')
 // and a year, and returns the day of the week for that date in that year. 
 
 function whensYourParty(date, year) {
-  // Find the day of the year for your birthday
+  const birthdayGivenYear = new Date(year, date.getMonth(), date.getDate());
+
+  // Day of the week
+  const dayOfWeek = birthdayGivenYear.getDay();
+
+  // Return day's
+  return days[dayOfWeek]
 }
 
-whensYourParty(bday, 2022)
+console.log(whensYourParty(bday, 2022), 'My birthday party!')
 
 // Stretch Goal: Return an array listing all 
 // the days when your birthday occured since 
